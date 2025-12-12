@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: speech-to-text-service
+  namespace: ai-interview
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: speech-to-text-service
+  template:
+    metadata:
+      labels:
+        app: speech-to-text-service
+    spec:
+      containers:
+      - name: speech-to-text-service
+        image: gograbjob/speech-to-text-service:1.0.0
+        ports:
+        - containerPort: 8304
+        envFrom:
+        - secretRef:
+            name: ai-api-keys

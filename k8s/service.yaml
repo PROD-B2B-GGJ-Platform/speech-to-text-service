@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: speech-to-text-service
+  namespace: ai-interview
+spec:
+  ports:
+  - port: 8304
+  selector:
+    app: speech-to-text-service
